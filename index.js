@@ -67,6 +67,7 @@ client.on("message", function(message) {
   }
 });
 
+
 const queue = new Map();
 
 client.on("message", async message => {
