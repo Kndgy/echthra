@@ -23,5 +23,14 @@
     "dotenv": "^8.2.0",
     "ffmpeg-static": "^4.2.7",
     "ytdl-core": "^4.4.3"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kndgy/kan.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Kndgy/kan/issues"
+  },
+  "homepage": "https://github.com/Kndgy/kan#readme"
 }
