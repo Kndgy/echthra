@@ -5,8 +5,6 @@ const ytdl = require('ytdl-core');
 const client = new Discord.Client();
 const { MessageEmbed } = require('discord.js');
 const advicelist = require('./advice.json');
-var http = require('http');
-
 
 
 client.on('ready', ()=>{
