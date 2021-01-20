@@ -1,9 +1,11 @@
+require('dotenv').config(); 
+console.log(process.env.TOKEN)
 const Discord = require("discord.js");
-const config = require("./config.json");
 const ytdl = require('ytdl-core');
 const client = new Discord.Client();
 const { MessageEmbed } = require('discord.js');
 const advicelist = require('./advice.json');
+
 
 client.on('ready', ()=>{
   console.log('true');
@@ -185,4 +187,4 @@ function play(guild, song) {
   serverQueue.textChannel.send(`playing: **${song.title}**`);
 }
 
-client.login(config.BOT_TOKEN);
+client.login();
