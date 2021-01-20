@@ -3,26 +3,14 @@ const config = require("./config.json");
 const ytdl = require('ytdl-core');
 const client = new Discord.Client();
 const { MessageEmbed } = require('discord.js');
+const advicelist = require('./advice.json');
 
 client.on('ready', ()=>{
   console.log('true');
 });
 
 /*thanks to ema for the advices*/
-const advice = [
-      "Don´t drink oil ",
-      "When you´re in a hurry everyone walks and drives slower than usual ",
-      "Don’t block the entire sideway with your group of friends",
-      "Always wear sunscreen ",
-      "Don’t make decisions when you´re sad... or hungry ",
-      "Make sure your back is straight every 30 mins ",
-      "Don’t stand up in a canoe ",
-      "Buy a plunger before you need a plunger ",
-      "Ham and honey is not a good food combination ",
-      "Floss...before its too late ",
-      "Ctrl+shift+T opens closed tabs ",
-      "Go to bed earlier, sleep ",
-      "Mouse wheel click to open link in a new tab"]
+
 
 const prefix = "*";
 
@@ -35,7 +23,8 @@ client.on("message", function(message) {
   const command = args.shift().toLowerCase();
 
   if (command === "ping") {
-    message.channel.send(`this bot latency is ${Date.now() - message.createdTimestamp}ms. API Latency is ${Math.round(client.ws.ping)}ms`);
+    message.channel.send(`your ping is ${Date.now() - message.createdTimestamp}ms. and this bot API Latency is ${Math.round(client.ws.ping)}ms`);
+    return;
   }else if(command === 'monke'){
     const embed = new MessageEmbed()
     .setTitle('flip')
@@ -45,8 +34,8 @@ client.on("message", function(message) {
   }else if ( command === "tes"){
     message.channel.send('tis');
   }else if(command === "advice"){
-    const advices = advice[Math.floor(Math.random() * advice.length)];
-    message.channel.send(advices);
+    
+    message.channel.send(advicelist.advice[Math.floor(Math.random() * advicelist.advice.length)]);
   }else if(command === 'join'){
     if(message.member.voice.channel){
       message.member.voice.channel.join();
@@ -90,7 +79,7 @@ client.on("message", async message => {
     message.react('👍') ;
     execute(message, serverQueue);
     return;
-  } else if (message.content.startsWith(`${prefix}skip`)) {
+  }else if (message.content.startsWith(`${prefix}skip`)) {
     message.react('👍') ;
     skip(message, serverQueue);
     return;
