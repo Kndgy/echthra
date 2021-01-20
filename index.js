@@ -4,6 +4,7 @@ const ytdl = require('ytdl-core');
 const client = new Discord.Client();
 const { MessageEmbed } = require('discord.js');
 const advicelist = require('./advice.json');
+const app = require('discord.js');
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
