@@ -1,4 +1,4 @@
-require('dotenv').config().listen(process.env.PORT || 5000); 
+require('dotenv').config(); 
 console.log(process.env.TOKEN)
 const Discord = require("discord.js");
 const ytdl = require('ytdl-core');
