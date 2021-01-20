@@ -1,11 +1,14 @@
 require('dotenv').config(); 
-console.log(process.env.TOKEN)
 const Discord = require("discord.js");
 const ytdl = require('ytdl-core');
 const client = new Discord.Client();
 const { MessageEmbed } = require('discord.js');
 const advicelist = require('./advice.json');
 
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Our app is running on port ${ PORT }`);
+});
 
 client.on('ready', ()=>{
   console.log('true');
