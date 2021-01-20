@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "simple bot",
   "main": "index.js",
+  "engines": {
+    "node": "5.0.0",
+    "npm": "4.6.1"
+    },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js"
