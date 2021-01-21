@@ -6,6 +6,14 @@ const { MessageEmbed } = require('discord.js');
 const advicelist = require('./advice.json');
 const topics = require('./topic.json');
 
+
+client.on('ready', () => {
+  client.user.setPresence({ game: { name: "bruh" }, status: 'online' })
+  console.log(`${client.user.username} is up and running!`);
+})
+
+const coint = ["head", "tail"];
+
 client.on('ready', ()=>{
   console.log('true');
 });
@@ -37,7 +45,12 @@ client.on("message", function(message) {
     message.channel.send(advicelist.advice[Math.floor(Math.random() * advicelist.advice.length)]);
   }else if(command === "topic"){
     message.channel.send(topics.topic[Math.floor(Math.random() * topics.topic.length)]);
-  }else if(command === 'join'){
+  }else if(command === "roll"){
+    message.channel.send("rolls (1-100)....");
+    message.channel.send(Math.floor(Math.random()*100));
+  }else if(command === "flip"){
+    message.channel.send(coint[Math.floor(Math.random() * coint.length)]);
+  } else if(command === 'join'){
     if(message.member.voice.channel){
       message.member.voice.channel.join();
       message.react('👍') ;
@@ -60,8 +73,12 @@ client.on("message", function(message) {
       { name: 'stop', value:'remove queue and disconnect bot from voice channel'},
       { name: 'leave', value:'disconenct bot from voice channel'},
       { name: 'advice', value:'gives you random and *useful* advices'},
+      { name: 'roll', value: 'rolls dice 1-100'},
+      { name: 'flip', value: 'flip a coint' },
       { name: 'monke', value:'flip'},
     )
+    .setTimestamp()
+    .setFooter('[wip]spotify, playlist, queue list, implement calculator into main file');
     message.channel.send(help);
   }else{
     return;
