@@ -22,7 +22,7 @@ client.on('ready', ()=>{
 
 /*thanks to ema for the advices*/
 
-const prefix = "*";
+const prefix = "'";
 
 client.on("message", function(message) {
   if (message.author.bot) return;
