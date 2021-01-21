@@ -1,6 +1,6 @@
-you can start the bot terminal with :
+you can start the bot on your local terminal with :
 
-### `node index.js`
+### `npm start`
 
 simple bot i code as my side project
 
