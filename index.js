@@ -5,10 +5,10 @@ const client = new Discord.Client();
 const { MessageEmbed } = require('discord.js');
 const advicelist = require('./advice.json');
 const topics = require('./topic.json');
-
+const thoughts = require('./thought.json');
 
 client.on('ready', () => {
-  client.user.setPresence({ game: { name: "bruh" }, status: 'online' })
+  client.user.setPresence({ game: { name: 'with discord.js' }, status: 'idle' })
   console.log(`${client.user.username} is up and running!`);
 })
 
@@ -55,7 +55,9 @@ client.on("message", function(message) {
       message.member.voice.channel.join();
       message.react('👍') ;
     }
-  }else if(command === 'leave'){
+  }else if(command === 'thought'){
+    message.channel.send(thougts.thought[Math.floor(Math.random() * thoughts.thought.length)]);
+  } else if(command === 'leave'){
     if(message.member.voice.channel){
       message.member.voice.channel.leave();
       message.react('👍') ;
@@ -73,6 +75,8 @@ client.on("message", function(message) {
       { name: 'stop', value:'remove queue and disconnect bot from voice channel'},
       { name: 'leave', value:'disconenct bot from voice channel'},
       { name: 'advice', value:'gives you random and *useful* advices'},
+      { name: 'topic', value: 'gives you random topics as conversation starter'},
+      { name: 'thought', value: 'just thought'},
       { name: 'roll', value: 'rolls dice 1-100'},
       { name: 'flip', value: 'flip a coint' },
       { name: 'monke', value:'flip'},
