@@ -1,6 +1,6 @@
-you can start the bot terminal with :
+you can start the bot on your local terminal with :
 
-### `node index.js`
+### `npm start`
 
 simple bot i code as my side project
 
@@ -8,11 +8,26 @@ many more feature is coming
 
 list of available command 
 
-ping   :information about bot and API latency<br>
-join   :join a voice channel<br>
-play   :"youtube url"' play a song from youtube, without quotation<br>
-skip   :skip a song<br>
-stop   :remove queue and disconnect bot from voice channel<br>
-leave  :disconenct bot from voice channel<br>
-advice :gives you random and *useful* advices<br>
-monke  :flip' <br>
+###### `ping`
+information about bot and API latency
+
+###### `join`
+join a voice channel
+
+###### `play`
+"youtube url"' play a song from youtube, without quotation
+
+###### `skip`
+skip a song
+
+###### `stop`
+remove queue and disconnect bot from voice channel
+
+###### `leave`
+disconenct bot from voice channel
+
+###### `advice`
+gives you random and *useful* advices
+
+###### `monke`
+flip' 
