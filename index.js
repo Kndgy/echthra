@@ -31,7 +31,7 @@ client.on("message", function(message) {
   const command = args.shift().toLowerCase();
 
   if (command === "ping") {
-    message.channel.send(`your ping is ${Date.now() - message.createdTimestamp}ms. and this bot API Latency is ${Math.round(client.ws.ping)}ms`);
+    message.channel.send(`this bot API Latency is ${Math.round(client.ws.ping)}ms.`);
     return;
   }else if(command === 'monke'){
     const embed = new MessageEmbed()
