@@ -56,7 +56,7 @@ client.on("message", function(message) {
       message.react('👍') ;
     }
   }else if(command === 'thought'){
-    message.channel.send(thougts.thought[Math.floor(Math.random() * thoughts.thought.length)]);
+    message.channel.send(thoughts.thought[Math.floor(Math.random() * thoughts.thought.length)]);
   } else if(command === 'leave'){
     if(message.member.voice.channel){
       message.member.voice.channel.leave();
