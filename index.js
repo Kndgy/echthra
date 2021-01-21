@@ -4,6 +4,7 @@ const ytdl = require('ytdl-core');
 const client = new Discord.Client();
 const { MessageEmbed } = require('discord.js');
 const advicelist = require('./advice.json');
+const topics = require('topic.json');
 
 client.on('ready', ()=>{
   console.log('true');
@@ -33,8 +34,9 @@ client.on("message", function(message) {
   }else if ( command === "tes"){
     message.channel.send('tis');
   }else if(command === "advice"){
-    
     message.channel.send(advicelist.advice[Math.floor(Math.random() * advicelist.advice.length)]);
+  }else if(command === "topic"){
+    message.channel.send(topics.topic[Math.floor(Math.random() * topics.topic.length)]);
   }else if(command === 'join'){
     if(message.member.voice.channel){
       message.member.voice.channel.join();
