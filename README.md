@@ -8,26 +8,26 @@ many more feature is coming
 
 list of available command 
 
-######ping
+###### `ping`
 information about bot and API latency
 
-######join
+###### `join`
 join a voice channel
 
-######play
+###### `play`
 "youtube url"' play a song from youtube, without quotation
 
-######skip
+###### `skip`
 skip a song
 
-######stop
+###### `stop`
 remove queue and disconnect bot from voice channel
 
-leave<br>
+###### `leave`
 disconenct bot from voice channel
 
-######advice<br>
+###### `advice`
 gives you random and *useful* advices
 
-monke<br>
+###### `monke`
 flip' 
