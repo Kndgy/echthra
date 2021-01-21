@@ -6,6 +6,8 @@ const { MessageEmbed } = require('discord.js');
 const advicelist = require('./advice.json');
 const topics = require('./topic.json');
 const thoughts = require('./thought.json');
+const fetch = require('node-fetch');
+const querystring = require('querystring');
 
 client.on('ready', () => {
   client.user.setPresence({ game: { name: 'with discord.js' }, status: 'idle' })
@@ -80,6 +82,8 @@ client.on("message", function(message) {
       { name: 'roll', value: 'rolls dice 1-100'},
       { name: 'flip', value: 'flip a coint' },
       { name: 'monke', value:'flip'},
+      { name: 'cat', value: 'gives you cets picture'},
+      { name: 'urban ', value: 'search for urban dictionary, ex: urban bruh'}
     )
     .setTimestamp()
     .setFooter('[wip]spotify, playlist, queue list, implement calculator into main file');
@@ -89,6 +93,47 @@ client.on("message", function(message) {
   }
 });
 
+/*cat rest api from aws*/
+client.on('message', async message => {
+
+  if (message.author.bot) return;
+  if (!message.content.startsWith(prefix)) return;
+
+  const commandBody = message.content.slice(prefix.length);
+  const args = commandBody.split(' ');
+  const command = args.shift().toLowerCase();
+  if (command === 'cat'){
+    const {file} = await fetch('https://aws.random.cat/meow').then(
+      response => response.json());
+    message.channel.send(file);
+  }else if(command === 'urban'){
+    if(!args.length){
+      return message.channel.send('you need to type what you are looking for');
+    }
+    const query = querystring.stringify({ term: args.join('')});
+    const {list} = await fetch(`https://api.urbandictionary.com/v0/define?${query}`).then(
+      response => response.json()
+    );
+    if(!list.length){
+      return message.channel.send(`no results found for${args.join(' ')}**.`);
+    }
+    const trim = (str, max) => ((str.length>max) ? `${str.slice(0, max - 3)}...` : str);
+    const [answer] = list;
+    const embed = new MessageEmbed()
+    .setColor(0x151b54)
+    .setTitle(answer.word)
+    .setURL(answer.permalink)
+    .addFields(
+      { name: 'Definition', value: trim(answer.definition, 1024)},
+      { name: 'Example', value: trim(answer.example, 1024)},
+      { name: 'Rating', value: `👍 ${answer.thumbs_up}. 👎 ${answer.thumbs_down}.`}
+    );
+    message.channel.send(embed)
+  } else {
+    return;
+  }
+  
+});
 
 const queue = new Map();
 
