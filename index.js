@@ -56,7 +56,7 @@ client.on("message", function(message) {
       message.member.voice.channel.join();
       message.react('👍') ;
     } else {
-      message.member.send("you are not in any voice channel");
+      message.channel.send("you are not in any voice channel");
     }
   }else if(command === 'thought'){
     message.channel.send(thoughts.thought[Math.floor(Math.random() * thoughts.thought.length)]);
