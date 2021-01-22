@@ -20,8 +20,6 @@ client.on('ready', ()=>{
   console.log('true');
 });
 
-/*thanks to ema for the advices*/
-
 const prefix = "'";
 
 client.on("message", function(message) {
@@ -44,6 +42,7 @@ client.on("message", function(message) {
   }else if ( command === "tes"){
     message.channel.send('tis');
   }else if(command === "advice"){
+    /*thanks to ema for the advices*/
     message.channel.send(advicelist.advice[Math.floor(Math.random() * advicelist.advice.length)]);
   }else if(command === "topic"){
     message.channel.send(topics.topic[Math.floor(Math.random() * topics.topic.length)]);
@@ -93,7 +92,7 @@ client.on("message", function(message) {
   }
 });
 
-/*cat rest api from aws*/
+
 client.on('message', async message => {
 
   if (message.author.bot) return;
@@ -102,11 +101,13 @@ client.on('message', async message => {
   const commandBody = message.content.slice(prefix.length);
   const args = commandBody.split(' ');
   const command = args.shift().toLowerCase();
+  /*cat rest api from aws*/
   if (command === 'cat'){
     const {file} = await fetch('https://aws.random.cat/meow').then(
       response => response.json());
     message.channel.send(file);
   }else if(command === 'urban'){
+    /*urban rest api from urban dictionary*/
     if(!args.length){
       return message.channel.send('you need to type what you are looking for');
     }
@@ -117,6 +118,7 @@ client.on('message', async message => {
     if(!list.length){
       return message.channel.send(`no results found for${args.join(' ')}**.`);
     }
+    /* embed for urban */
     const trim = (str, max) => ((str.length>max) ? `${str.slice(0, max - 3)}...` : str);
     const [answer] = list;
     const embed = new MessageEmbed()
