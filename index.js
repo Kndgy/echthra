@@ -31,7 +31,21 @@ client.on("message", message => {
 
   if(command === 'ping'){
     message.channel.send(`this bot API latency is ${Math.round(client.ws.ping)}ms.`)
-   }
+   }else if(command === 'join'){
+    if(message.member.voice.channel){
+      message.member.voice.channel.join();
+      message.react('👍') ;
+    } else {
+      message.channel.send("you are not in any voice channel");
+    }
+  }else if(command === 'leave'){
+    if(message.member.voice.channel){
+      message.member.voice.channel.leave();
+      message.react('👍') ;
+  }else{
+    message.channel.send("there was an error executing that command");
+  }
+};
 
   if(!client.commands.has(command)) return;
   
