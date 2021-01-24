@@ -1,28 +1,27 @@
 require('dotenv').config(); 
+const fs = require('fs');
 const Discord = require("discord.js");
 const ytdl = require('ytdl-core');
 const client = new Discord.Client();
 const { MessageEmbed } = require('discord.js');
-const advicelist = require('./advice.json');
-const topics = require('./topic.json');
-const thoughts = require('./thought.json');
 const fetch = require('node-fetch');
 const querystring = require('querystring');
+const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
+client.commands = new Discord.Collection();
 
 client.on('ready', () => {
   client.user.setPresence({ game: { name: 'with discord.js' }, status: 'idle' })
   console.log(`${client.user.username} is up and running!`);
 })
 
-const coint = ["head", "tail"];
-
-client.on('ready', ()=>{
-  console.log('true');
-});
+for (const file of commandFiles) {
+	const command = require(`./commands/${file}`);
+	client.commands.set(command.name, command);
+}
 
 const prefix = "'";
 
-client.on("message", function(message) {
+client.on("message", message => {
   if (message.author.bot) return;
   if (!message.content.startsWith(prefix)) return;
 
@@ -30,67 +29,17 @@ client.on("message", function(message) {
   const args = commandBody.split(' ');
   const command = args.shift().toLowerCase();
 
-  if (command === "ping") {
-    message.channel.send(`this bot API Latency is ${Math.round(client.ws.ping)}ms.`);
-    return;
-  }else if(command === 'monke'){
-    const embed = new MessageEmbed()
-    .setTitle('flip')
-    .setColor(0x151b54)
-    .setDescription('monke flip');
-    message.channel.send(embed);
-  }else if ( command === "tes"){
-    message.channel.send('tis');
-  }else if(command === "advice"){
-    /*thanks to ema for the advices*/
-    message.channel.send(advicelist.advice[Math.floor(Math.random() * advicelist.advice.length)]);
-  }else if(command === "topic"){
-    message.channel.send(topics.topic[Math.floor(Math.random() * topics.topic.length)]);
-  }else if(command === "roll"){
-    message.channel.send("rolls (1-100)....");
-    message.channel.send(Math.floor(Math.random()*100));
-  }else if(command === "flip"){
-    message.channel.send(coint[Math.floor(Math.random() * coint.length)]);
-  } else if(command === 'join'){
-    if(message.member.voice.channel){
-      message.member.voice.channel.join();
-      message.react('👍') ;
-    } else {
-      message.channel.send("you are not in any voice channel");
-    }
-  }else if(command === 'thought'){
-    message.channel.send(thoughts.thought[Math.floor(Math.random() * thoughts.thought.length)]);
-  } else if(command === 'leave'){
-    if(message.member.voice.channel){
-      message.member.voice.channel.leave();
-      message.react('👍') ;
-  }
-  }else if(command === 'help'){
-    const help = new MessageEmbed()
-    .setColor(0x151b54)
-    .setTitle('help')
-    .setDescription('list of available command')
-    .addFields(
-      { name: 'ping', value: 'information about bot and API latency'},
-      { name: 'join', value: 'join a voice channel'},
-      { name: 'play "youtube url"', value:'play a song from youtube, without quotation'},
-      { name: 'skip', value:'skip a song'},
-      { name: 'stop', value:'remove queue and disconnect bot from voice channel'},
-      { name: 'leave', value:'disconenct bot from voice channel'},
-      { name: 'advice', value:'gives you random and *useful* advices'},
-      { name: 'topic', value: 'gives you random topics as conversation starter'},
-      { name: 'thought', value: 'just thought'},
-      { name: 'roll', value: 'rolls dice 1-100'},
-      { name: 'flip', value: 'flip a coint' },
-      { name: 'monke', value:'flip'},
-      { name: 'cat', value: 'gives you cets picture'},
-      { name: 'urban ', value: 'search for urban dictionary, ex: urban bruh'}
-    )
-    .setTimestamp()
-    .setFooter('[wip]spotify, playlist, queue list, implement calculator into main file');
-    message.channel.send(help);
-  }else{
-    return;
+  if(command === 'ping'){
+    message.channel.send(`this bot API latency is ${Math.round(client.ws.ping)}ms.`)
+   }
+
+  if(!client.commands.has(command)) return;
+  
+  try {
+    client.commands.get(command).execute(message, args);
+  } catch (error){
+    console.error(error);
+    message.reply('there was an error to execute that command');
   }
 });
 
@@ -103,12 +52,8 @@ client.on('message', async message => {
   const commandBody = message.content.slice(prefix.length);
   const args = commandBody.split(' ');
   const command = args.shift().toLowerCase();
-  /*cat rest api from aws*/
-  if (command === 'cat'){
-    const {file} = await fetch('https://aws.random.cat/meow').then(
-      response => response.json());
-    message.channel.send(file);
-  }else if(command === 'urban'){
+  
+  if(command === 'urban'){
     /*urban rest api from urban dictionary*/
     if(!args.length){
       return message.channel.send('you need to type what you are looking for');
@@ -256,7 +201,7 @@ function play(guild, song) {
   serverQueue.textChannel.send(`playing: **${song.title}**`);
 }
 
-client.login();
+client.login(process.env.TOKEN);
 
 const http = require('http');
 const server = http.createServer((req, res) => {
