@@ -9,25 +9,25 @@ many more feature is coming
 list of available command 
 
 ###### `ping`
-information about bot and API latency
-
-###### `join`
-join a voice channel
-
-###### `play`
-"youtube url"' play a song from youtube, without quotation
-
-###### `skip`
-skip a song
-
-###### `stop`
-remove queue and disconnect bot from voice channel
-
-###### `leave`
-disconenct bot from voice channel
+API latency
 
 ###### `advice`
 gives you random and *useful* advices
 
-###### `monke`
-flip' 
+###### `topic`
+gives you random topics
+
+###### `thought`
+just thought
+
+###### `cat`
+gives you random cat pics
+
+###### `urban example`
+search for urban dictionary
+
+###### `roll`
+rolls 1-100
+
+###### `flip`
+flip a coin
