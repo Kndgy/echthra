@@ -26,7 +26,10 @@
     "fetch": "^1.1.0",
     "ffmpeg-static": "^4.2.7",
     "install": "^0.13.0",
+    "merge-options": "^3.0.4",
     "node": "^15.4.0",
+    "spotify-url-info": "^2.2.0",
+    "youtube-sr": "^3.0.3",
     "ytdl-core": "^4.4.4"
   },
   "devDependencies": {},
