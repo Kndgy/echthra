@@ -36,6 +36,8 @@ client.on("message", message => {
 
   if(command === "ping"){
     message.channel.send(`this bot API latency is ${Math.round(client.ws.ping)}ms.`);
+  }else if(command === "test"){
+    message.channel.send(':bangbang::person_fencing: :rage: THIS IS A LEARNING SERVER :rage::person_fencing: :bangbang:')
   }
 
   if(!client.commands.has(command)) return;
