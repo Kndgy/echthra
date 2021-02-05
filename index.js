@@ -21,7 +21,7 @@ client.on('ready', () => {
 })
 
 client.setInterval(function(){
-  var generalChannel = bot.channels.get("723794736325853209"); // Replace with known channel ID
+  var generalChannel = client.channels.get("723794736325853209"); // Replace with known channel ID
   generalChannel.send("Hello, world!") ;
 }, 10000);
 
