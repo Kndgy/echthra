@@ -18,12 +18,11 @@ const prefix = "'";
 client.on('ready', () => {
   client.user.setPresence({ game: { name: 'with discord.js' }, status: 'idle' })
   console.log(`${client.user.username} is up and running!`);
+  client.setInterval(function(){
+    var generalChannel = client.channels.get("723794736325853209"); // Replace with known channel ID
+    generalChannel.send("Hello, world!") ;
+  }, 10000);
 })
-
-client.setInterval(function(){
-  var generalChannel = client.channels.get("723794736325853209"); // Replace with known channel ID
-  generalChannel.send("Hello, world!") ;
-}, 10000);
 
 
 client.on("message", message => {
