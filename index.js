@@ -22,7 +22,7 @@ client.on('ready', () => {
   client.setInterval(function(){
     var generalChannel = client.channels.cache.get("723794736325853209");
     generalChannel.send(randomlist.random[Math.floor(Math.random()*randomlist.random.length)]) ;
-  }, 300000);
+  }, 3000000);
 })
 
 
