@@ -1,9 +1,10 @@
 require('dotenv').config(); 
 const fs = require('fs');
 const Discord = require("discord.js");
-const ytdl = require('ytdl-core');
 const client = new Discord.Client();
+const ytdl = require('ytdl-core');
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
+const randomlist = require('./commands/random.json')
 
 client.commands = new Discord.Collection();
 
@@ -19,9 +20,9 @@ client.on('ready', () => {
   client.user.setPresence({ game: { name: 'with discord.js' }, status: 'idle' })
   console.log(`${client.user.username} is up and running!`);
   client.setInterval(function(){
-    var generalChannel = client.channels.cache.get("723794736325853209"); // Replace with known channel ID
-    generalChannel.send("Hello, world!") ;
-  }, 10000);
+    var generalChannel = client.channels.cache.get("723794736325853209");
+    generalChannel.send(randomlist.random[Math.floor(Math.random()*randomlist.random.length)]) ;
+  }, 30000);
 })
 
 
@@ -32,24 +33,6 @@ client.on("message", message => {
   const commandBody = message.content.slice(prefix.length);
   const args = commandBody.split(' ');
   const command = args.shift().toLowerCase();
-
-  if(command === 'ping'){
-    message.channel.send(`this bot API latency is ${Math.round(client.ws.ping)}ms.`)
-   }else if(command === 'join'){
-    if(message.member.voice.channel){
-      message.member.voice.channel.join();
-      message.react('👍') ;
-    } else {
-      message.channel.send("you are not in any voice channel");
-    }
-  }else if(command === 'leave'){
-    if(message.member.voice.channel){
-      message.member.voice.channel.leave();
-      message.react('👍') ;
-  }else{
-    message.channel.send("there was an error executing that command");
-  }
-};
 
   if(!client.commands.has(command)) return;
   
