@@ -34,11 +34,11 @@ client.on("message", message => {
   const args = commandBody.split(' ');
   const command = args.shift().toLowerCase();
 
-  if(!client.commands.has(command)) return;
-  
   if(command === "ping"){
     message.channel.send(`this bot API latency is ${Math.round(client.ws.ping)}ms.`);
   }
+
+  if(!client.commands.has(command)) return;
 
   try {
     client.commands.get(command).execute(message, args);
