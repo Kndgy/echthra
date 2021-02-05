@@ -22,7 +22,7 @@ client.on('ready', () => {
   client.setInterval(function(){
     var generalChannel = client.channels.cache.get("723794736325853209");
     generalChannel.send(randomlist.random[Math.floor(Math.random()*randomlist.random.length)]) ;
-  }, 30000);
+  }, 300000);
 })
 
 
@@ -36,6 +36,10 @@ client.on("message", message => {
 
   if(!client.commands.has(command)) return;
   
+  if(command === "ping"){
+    message.channel.send(`this bot API latency is ${Math.round(client.ws.ping)}ms.`);
+  }
+
   try {
     client.commands.get(command).execute(message, args);
   } catch (error){
