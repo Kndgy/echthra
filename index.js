@@ -6,6 +6,7 @@ const ytdl = require('ytdl-core');
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 const randomlist = require('./commands/random.json')
 
+
 client.commands = new Discord.Collection();
 
 for (const file of commandFiles) {
@@ -39,7 +40,7 @@ client.on("message", message => {
   } else if(command === "test"){
     message.channel.send('https://cdn.discordapp.com/attachments/728498552434720779/808365941107851364/monke.gif');
   }
-  
+
   if(!client.commands.has(command)) return;
 
   try {
