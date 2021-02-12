@@ -8,7 +8,7 @@ module.exports = {
     async execute(message, args,){
         var r = await pixabay.searchImages(key, 'puppy')
         const embed = new MessageEmbed()
-             .setTitle("Random Puppy")
+             .setTitle("Random Doggo")
              .setImage(r.hits[Math.floor(Math.random() * r.hits.length)].largeImageURL)
              message.channel.send(embed)
     }

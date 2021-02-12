@@ -1,3 +1,4 @@
+const { MessageEmbed } = require('discord.js');
 const fetch = require('node-fetch');
 
 module.exports = {
@@ -7,6 +8,9 @@ module.exports = {
             const {file} = await fetch('https://aws.random.cat/meow').then(
             response => response.json()
         );
-        message.channel.send(file);
+        const embed = new MessageEmbed()
+        .setTitle("Random Catto")
+        .setImage(file)
+        message.channel.send(embed);
     }
 }
