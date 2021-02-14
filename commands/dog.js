@@ -9,7 +9,7 @@ module.exports = {
     },function(error, response, body) {
         if(!error && response.statusCode == 200 ){
             var ParsedData = JSON.parse(body);
-            const embed = new Discord.RichEmbed()
+            const embed = new MessageEmbed()
             .setTitle("Random Doggo")
             .setImage(parsedData.message)
             .setColor(0xffabd7)

@@ -10,6 +10,7 @@ module.exports = {
         const embed = new MessageEmbed()
         .setTitle("RACCOOOOOOOOOON")
         .setImage(r.hits[Math.floor(Math.random()*r.hits.length)].largeImageURL)
+        .setColor(0xffabd7)
         message.channel.send(embed);
     }
 }

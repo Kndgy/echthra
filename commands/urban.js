@@ -22,7 +22,7 @@ module.exports = {
           const trim = (str, max) => ((str.length>max) ? `${str.slice(0, max - 3)}...` : str);
           const [answer] = list;
           const embed = new MessageEmbed()
-          .setColor(0x151b54)
+          .setColor(0xffabd7)
           .setTitle(answer.word)
           .setURL(answer.permalink)
           .addFields(

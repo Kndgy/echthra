@@ -11,6 +11,7 @@ module.exports = {
         const embed = new MessageEmbed()
         .setTitle("Random Catto")
         .setImage(file)
+        .setColor(0xffabd7)
         message.channel.send(embed);
     }
 }
