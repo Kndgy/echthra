@@ -6,21 +6,21 @@ module.exports = {
     name:'food',
     description:'random food picts',
     async execute(message, args){
-        try{
-            const {file} = await fetch('https://www.reddit.com/r/FoodPorn.json?sort=top&t=week')
-            const allowed = message.channel.nsfw ? brotliDecompressSync.data.children : brotliDecompressSync.data.children.filter(post => !post.data.over_18);
-            if(!allowed.length) 
-            return message.channel.send
-            ('it seems theres no food on tabl');
-            const random = Math.floor(Math.random()*allowed.length)
+        try {
+            const { body } = await snekfetch
+                .get('https://www.reddit.com/r/FoodPorn.json?sort=top&t=week')
+                .query({ limit: 800 });
+            const allowed = message.channel.nsfw ? body.data.children : body.data.children.filter(post => !post.data.over_18);
+            if (!allowed.length) return message.channel.send('It seems we are out of fresh memes!, Try again later.');
+            const randomnumber = Math.floor(Math.random() * allowed.length)
             const embed = new MessageEmbed()
             .setColor(0xffabd7)
-            .setTitle(allowed[random].data.title)
-            .setDescription("Posted by: "+ allowed[random].data.author)
-            .setImage(allowed[random].data.url)
-            .addField("Up votes:"+allowed[random].data.ups+"/ comments: "+ allowed[random].data.num_comments)
-            .setFooter("provided by /FoodPorn")
-            message.channel.sen(embed) 
+            .setTitle(allowed[randomnumber].data.title)
+            .setDescription("Posted by: " + allowed[randomnumber].data.author)
+            .setImage(allowed[randomnumber].data.url)
+            .addField("Other info:", "Up votes: " + allowed[randomnumber].data.ups + " / Comments: " + allowed[randomnumber].data.num_comments)
+            .setFooter("Memes provided by r/dankmemes")
+            message.channel.send(embed)
         } catch(err){
             return console.log(err);
         }
