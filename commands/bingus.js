@@ -9,7 +9,9 @@ const bingus =["https://media.discordapp.net/attachments/748780918067691582/8103
 "https://media.discordapp.net/attachments/775500327079903252/810348912690855946/image0.png",
 "https://media.discordapp.net/attachments/775500327079903252/810349855238389780/image0.png?width=572&height=552",
 "https://media.discordapp.net/attachments/775500327079903252/810350131386908712/image0.png?width=581&height=552",
-"https://media.discordapp.net/attachments/775500327079903252/810350131941474324/image1.png?width=584&height=552"
+"https://media.discordapp.net/attachments/775500327079903252/810350131941474324/image1.png?width=584&height=552",
+"https://media.tenor.co/videos/f0870b1ec2ff020ed3a2f41438617d42/mp4",
+"https://media.tenor.co/videos/d51510fe78a434d7e5ae79e7b4e32a76/mp4"
 ]
 module.exports = {
     name : 'bingus',

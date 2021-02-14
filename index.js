@@ -38,7 +38,8 @@ client.on("message", message => {
   if(command === "ping"){
     message.channel.send(`this bot API latency is ${Math.round(client.ws.ping)}ms.`);
   } else if(command === "test"){
-    message.channel.send('https://cdn.discordapp.com/attachments/728498552434720779/808365941107851364/monke.gif');
+    const ayy = client.emojis.cache.find(emoji => emoji.name === "H_why");
+   message.channel.send(`${ayy} a`);
   }
 
   if(!client.commands.has(command)) return;
