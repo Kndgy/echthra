@@ -8,7 +8,7 @@ module.exports = {
         request.get('https://dog.ceo/api/breeds/image/random',{
     },function(error, response, body) {
         if(!error && response.statusCode == 200 ){
-            var ParsedData = JSON.parse(body);
+            var parsedData = JSON.parse(body);
             const embed = new MessageEmbed()
             .setTitle("Random Doggo")
             .setImage(parsedData.message)
