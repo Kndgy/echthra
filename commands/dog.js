@@ -1,15 +1,23 @@
-var pixabay = require('pixabay-api')
-var key = "20235915-ae4a7fd433d4ee7b7823ec7b5"
+const request = require('request');
 const {MessageEmbed} = require ('discord.js');
 
 module.exports = {
     name: 'dog',
     description: 'dog',
     async execute(message, args,){
-        var r = await pixabay.searchImages(key, 'puppy')
-        const embed = new MessageEmbed()
-             .setTitle("Random Doggo")
-             .setImage(r.hits[Math.floor(Math.random() * r.hits.length)].largeImageURL)
-             message.channel.send(embed)
+        request.get('https://dog.ceo/api/breeds/image/random',{
+    },function(error, response, body) {
+        if(!error && response.statusCode == 200 ){
+            var ParsedData = JSON.parse(body);
+            const embed = new Discord.RichEmbed()
+            .setTitle("Random Doggo")
+            .setImage(parsedData.message)
+            .setColor(0xffabd7)
+            message.channel.send(embed)
+        }else {
+            console.log(error);
+        }
+    })
+    
     }
 }
