@@ -1,6 +1,6 @@
 const { MessageEmbed } = require('discord.js');
 const fetch = require('node-fetch');
-const reddit = require('@elchologamer/random-reddit');
+const reddit = require('random-reddit');
 
 module.exports = {
     name:'food',
@@ -14,7 +14,7 @@ module.exports = {
         };
         
         reddit.getPost('https://www.reddit.com/r/FoodPorn/', options).then(post => { 
-            
+
            var title = post.title
            var content = post.text
            var postURL = post.permalink
