@@ -8,7 +8,6 @@ module.exports = {
     async execute(message, args){
         try{
             const {file} = await fetch('https://www.reddit.com/r/FoodPorn.json?sort=top&t=week')
-            query({limit:800});
             const allowed = message.channel.nsfw ? brotliDecompressSync.data.children : brotliDecompressSync.data.children.filter(post => !post.data.over_18);
             if(!allowed.length) 
             return message.channel.send
