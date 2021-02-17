@@ -26,6 +26,7 @@
     "fetch": "^1.1.0",
     "ffmpeg-static": "^4.2.7",
     "install": "^0.13.0",
+    "mathjs": "^9.2.0",
     "merge-options": "^3.0.4",
     "node": "^15.4.0",
     "pixabay-api": "^1.0.4",
