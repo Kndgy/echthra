@@ -1,5 +1,5 @@
 module.exports = {
-    name: 'convert',
+    name: 'bintodec',
     description: 'convert',
     execute(message,args){
         const numArgs = args.map(x => parseInt(x, 2));
