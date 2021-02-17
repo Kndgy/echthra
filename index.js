@@ -20,7 +20,7 @@ const prefix = "'";
 client.on('ready', () => {
   client.user.setPresence({ game: { name: 'with discord.js' }, status: 'idle' })
   var start = client.channels.cache.get("723794736325853209");
-  start.send(`${client.user.username} is up and running! just daily restart to clar the cache`)
+  start.send(`${client.user.username} is up and running! just daily restart to clear the cache`)
   client.setInterval(function(){
     var generalChannel = client.channels.cache.get("723794736325853209");
     generalChannel.send(randomlist.random[Math.floor(Math.random()*randomlist.random.length)]) ;

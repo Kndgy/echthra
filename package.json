@@ -29,6 +29,7 @@
     "merge-options": "^3.0.4",
     "node": "^15.4.0",
     "pixabay-api": "^1.0.4",
+    "request": "^2.88.2",
     "simple-youtube-api": "^5.2.1",
     "spotify-url-info": "^2.2.0",
     "youtube-sr": "^3.0.3",
