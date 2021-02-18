@@ -9,7 +9,7 @@ module.exports = {
                 response => response.json());
               
             
-            message.channel.send(body)
+            message.channel.send(body);
         } catch (err) {
             return console.log(err);
         }
