@@ -46,10 +46,6 @@ client.on("message", message => {
   }
 
  const command = client.commands.get(commandName) || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
-//unused
- if(command.args && !args.length){
-   return message.channel.send("you didnt provide any args");
- }
 
  if(!command) return
 
