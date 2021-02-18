@@ -6,7 +6,7 @@ module.exports = {
     async execute(message, args){
         try {
             const { body } = await fetch('https://www.reddit.com/r/foodporn.json?sort=top&t=week').then(
-                response => response.json())
+                response => response.json());
               
             
             message.channel.send(body)
