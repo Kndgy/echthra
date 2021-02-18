@@ -3,24 +3,27 @@ const fs = require('fs');
 const Discord = require("discord.js");
 const client = new Discord.Client();
 const ytdl = require('ytdl-core');
-const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 const randomlist = require('./commands/random.json')
 
 
 client.commands = new Discord.Collection();
+const commandFolders = fs.readdirSync('./commands');
 
-for (const file of commandFiles) {
-	const command = require(`./commands/${file}`);
-	client.commands.set(command.name, command);
+for (const folder of commandFolders){
+  const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
+  for (const file of commandFiles) {
+    const command = require(`./commands/${file}`);
+    client.commands.set(command.name, command);
+  }
 }
+
 
 const prefix = "'";
 
 
 client.on('ready', () => {
   client.user.setPresence({ game: { name: 'with discord.js' }, status: 'idle' })
-  var start = client.channels.cache.get("723794736325853209");
-  start.send(`${client.user.username} is up and running! just daily restart to clear the cache`)
+  console.log(`true`)
   client.setInterval(function(){
     var generalChannel = client.channels.cache.get("723794736325853209");
     generalChannel.send(randomlist.random[Math.floor(Math.random()*randomlist.random.length)]) ;
@@ -33,19 +36,25 @@ client.on("message", message => {
   if (!message.content.startsWith(prefix)) return;
 
   const args = message.content.slice(prefix.length).trim().split(' ');
-  const command = args.shift().toLowerCase();
+  const commandName = args.shift().toLowerCase();
 
-  if(command === "ping"){
+  if(commandName === "ping"){
     message.channel.send(`this bot API latency is ${Math.round(client.ws.ping)}ms.`);
-  } else if(command === "test"){
+  } else if(commandName === "test"){
     const ayy = client.emojis.cache.find(emoji => emoji.name === "H_why");
    message.channel.send(`${ayy} a`);
   }
 
-  if(!client.commands.has(command)) return;
+ const command = client.commands.get(commandName) || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
+//unused
+ if(command.args && !args.length){
+   return message.channel.send("you didnt provide any args");
+ }
+
+ if(!command) return
 
   try {
-    client.commands.get(command).execute(message, args);
+   command.execute(message, args);
   } catch (error){
     console.error(error);
     message.reply('there was an error to execute that command');

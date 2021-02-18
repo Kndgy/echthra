@@ -27,7 +27,11 @@ const bingus =["https://media.discordapp.net/attachments/748780918067691582/8103
 "https://media.discordapp.net/attachments/775500327079903252/810566516218527784/image1.png?width=555&height=552",
 "https://media.discordapp.net/attachments/775500327079903252/810566516499415051/image2.png?width=687&height=552",
 "https://media.discordapp.net/attachments/775500327079903252/810566516823162920/image3.png?width=665&height=552",
-"https://media.discordapp.net/attachments/775500327079903252/810566517191082055/image4.png?width=573&height=552"
+"https://media.discordapp.net/attachments/775500327079903252/810566517191082055/image4.png?width=573&height=552",
+"https://media.discordapp.net/attachments/775500327079903252/811856287482118144/9m5ra38b5xf61.png?width=405&height=552",
+"https://media.discordapp.net/attachments/775500327079903252/811856052785381376/zIR7Kq4.png?width=552&height=552",
+"https://media.discordapp.net/attachments/775500327079903252/811856015041101854/tenor.png?width=310&height=552",
+"https://media.discordapp.net/attachments/775500327079903252/811853977955336232/7e8131b49664cf619f1f7ac0fabf3a42.png?width=1040&height=551"
 ]
 module.exports = {
     name : 'bingus',

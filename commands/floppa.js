@@ -19,7 +19,9 @@ const floppa = [
     "https://media.discordapp.net/attachments/775500327079903252/810617196337168445/image0.png?width=584&height=552",
     "https://media.discordapp.net/attachments/775500327079903252/810617196685688873/image1.png?width=670&height=552",
     "https://media.discordapp.net/attachments/775500327079903252/810617197130809375/image2.png?width=560&height=552",
-    "https://media.discordapp.net/attachments/775500327079903252/810617197500039218/image3.png?width=563&height=552"
+    "https://media.discordapp.net/attachments/775500327079903252/810617197500039218/image3.png?width=563&height=552",
+    "https://media.discordapp.net/attachments/775500327079903252/811855828222214145/k1t6xac6k7u51.png?width=552&height=552",
+    "https://media.discordapp.net/attachments/775500327079903252/811855940730486795/Ehpdoe4X0AAltSR.png?width=508&height=552"
 ]
 
 module.exports = {

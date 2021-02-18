@@ -1,15 +1,25 @@
+const { MessageEmbed } = require("discord.js");
+
 module.exports = {
 	name: 'avatar',
+	aliases:['icon','pfp','av'],
 	description: 'Get the avatar URL of the tagged user(s), or your own avatar.',
 	execute(message) {
 		if (!message.mentions.users.size) {
-			return message.channel.send(`Your avatar: ${message.author.displayAvatarURL({ dynamic: true })}`);
+			const embed = new MessageEmbed()
+            .setTitle("Your avatar: ")
+            .setImage(message.author.displayAvatarURL({ size: 2048 }))
+            .setColor(0xffabd7)
+            message.channel.send(embed)
 		}
-
-		const avatarList = message.mentions.users.map(user => {
-			return `${user.username}'s avatar: ${user.displayAvatarURL({ dynamic: true })}`;
+		message.mentions.users.map(user => {
+			const embed = new MessageEmbed()
+            .setTitle(`${user.username}'s avatar: `)
+            .setImage(user.displayAvatarURL({ size: 2048 }))
+            .setColor(0xffabd7)
+			return message.channel.send(embed);
 		});
 
-		message.channel.send(avatarList);
+		
 	},
 };
