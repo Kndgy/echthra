@@ -4,7 +4,7 @@ const {MessageEmbed} = require ('discord.js');
 module.exports = {
     name: 'dog',
     description: 'dog',
-    async execute(message, args,){
+    async execute(message,){
         request.get('https://dog.ceo/api/breeds/image/random',{
     },function(error, response, body) {
         if(!error && response.statusCode == 200 ){
