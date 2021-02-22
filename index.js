@@ -56,10 +56,18 @@ client.on("message", message => {
 
 client.on("message", message => {
   if(message.author.bot) return;
-  if(/\bmorning||gm\b/i.test(message.content)){
-      message.channel.send("no, go back to sleep");
-  }else if(/\bwhy\b/i.test(message.content)){
-    message.channel.send("why not");
+
+  const messagee = message.content.trim().split(' ').shift().toLowerCase();
+
+  const response={
+    "morning" : "no, go back to sleep",
+    "why" : "why not",
+    "hi" : "hi hi",
+    "sup" : "what's good",
+    "bruh" : "bruh"
+  }
+  if(response[messagee]){
+    message.channel.send(response[messagee]);
   }
 });
 
