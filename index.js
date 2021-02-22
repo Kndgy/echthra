@@ -62,15 +62,10 @@ client.on("message", message => {
   const response={
     "morning" : "no, go back to sleep",
     "why" : "why not",
-    "hi" : "hi hi",
-    "sup" : "what's good",
-    "bruh" : "bruh"
   }
-  client.setInterval(function(){
-    if(response[messagee]){
-      message.channel.send(response[messagee]);
-    }
-  },10000)
+  if(response[messagee]){
+    message.channel.send(response[messagee]);
+  }
 });
 
 client.login(process.env.TOKEN);
