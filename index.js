@@ -66,9 +66,11 @@ client.on("message", message => {
     "sup" : "what's good",
     "bruh" : "bruh"
   }
-  if(response[messagee]){
-    message.channel.send(response[messagee]);
-  }
+  client.setInterval(function(){
+    if(response[messagee]){
+      message.channel.send(response[messagee]);
+    }
+  },10000)
 });
 
 client.login(process.env.TOKEN);
