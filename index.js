@@ -40,9 +40,6 @@ client.on("message", message => {
 
   if(commandName === "ping"){
     message.channel.send(`this bot API latency is ${Math.round(client.ws.ping)}ms.`);
-  } else if(commandName === "test"){
-    const ayy = client.emojis.cache.find(emoji => emoji.name === "H_why");
-   message.channel.send(`${ayy} a`);
   }
 
  const command = client.commands.get(commandName) || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
@@ -54,6 +51,15 @@ client.on("message", message => {
   } catch (error){
     console.error(error);
     message.reply('there was an error to execute that command');
+  }
+});
+
+client.on("message", message => {
+  if(message.author.bot) return;
+  if(/\bmorning||gm\b/i.test(message.content)){
+      message.channel.send("no, go back to sleep");
+  }else if(/\bwhy\b/i.test(message.content)){
+    message.channel.send("why not");
   }
 });
 
