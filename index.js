@@ -3,7 +3,8 @@ const fs = require('fs');
 const Discord = require("discord.js");
 const client = new Discord.Client();
 const ytdl = require('ytdl-core');
-const randomlist = require('./commands/random.json')
+const randomlist = require('./commands/random.json');
+const welcome = require('./welcome');
 
 
 client.commands = new Discord.Collection();
@@ -22,6 +23,7 @@ const prefix = "'";
 
 
 client.on('ready', () => {
+  welcome(client)
   client.user.setPresence({ game: { name: 'with discord.js' }, status: 'idle' })
   console.log(`true`)
   client.setInterval(function(){
@@ -29,6 +31,10 @@ client.on('ready', () => {
     generalChannel.send(randomlist.random[Math.floor(Math.random()*randomlist.random.length)]) ;
   }, 3600000);
 })
+
+
+
+
 
 
 client.on("message", message => {
@@ -51,19 +57,6 @@ client.on("message", message => {
   } catch (error){
     console.error(error);
     message.reply('there was an error to execute that command');
-  }
-});
-
-client.on("message", message => {
-  if(message.author.bot) return;
-
-  const messagee = message.content.trim().split(' ').shift().toLowerCase();
-
-  const response={
-    "morning" : "no, go back to sleep",
-  }
-  if(response[messagee]){
-    message.channel.send(response[messagee]);
   }
 });
 
