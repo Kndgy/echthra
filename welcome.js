@@ -1,5 +1,4 @@
 module.exports = (client) => {
-    const channelId = '813004160617283586';
     client.on("guildMemberAdd", (member) =>{
         console.log(member);
 
@@ -17,7 +16,7 @@ module.exports = (client) => {
         ]
         
 
-        const channel = member.guild.channels.cache.get(channelId);
+        var channel = member.guild.channels.cache.get('813004160617283586');
         channel.send(message)
     });
 };
