@@ -16,7 +16,9 @@ module.exports = (client) => {
         .setDescription(`If you're ready to start the verification, you can ping <@&813712228183834655> in <#813003820518998039>, and the currently available admin will reach out to you.`)
         .setDescription("After you passed the verification process, you will be granted access to our Main server.")
         .setDescription()
-        .setDescription("*This message is automatically generated*") 
+        .setDescription("*This message is automatically generated*",
+        "test",
+        "test") 
         .setTimestamp()
         channel.send(embed)
     });
