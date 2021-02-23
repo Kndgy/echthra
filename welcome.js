@@ -8,9 +8,9 @@ module.exports = (client) => {
         .setColor(0xffabd7)
         .setAuthor('Yasuragi Support Server')
         .addField(
-            {name: '',  value: `Hello <@${member.id}>`},
-            {name:'',value:"" },
-            {name:'',value: "Thank you for Joining Yasuragi support server. "},
+            {name: ' ',  value: `Hello <@${member.id}>`},
+            {name:' ',value:" " },
+            {name:' ',value: "Thank you for Joining Yasuragi support server. "},
             {value:  "I'm sorry that our bot has detected your account as a potential alt account."},
             {value: "" },
             {value: "Voice verification with our moderator is required for you to access Yasuragi main server."},
