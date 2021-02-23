@@ -2,10 +2,8 @@ require('dotenv').config();
 const fs = require('fs');
 const Discord = require("discord.js");
 const client = new Discord.Client();
-const ytdl = require('ytdl-core');
 const randomlist = require('./commands/random.json');
 const welcome = require('./welcome');
-
 
 client.commands = new Discord.Collection();
 const commandFolders = fs.readdirSync('./commands');
@@ -18,9 +16,7 @@ for (const folder of commandFolders){
   }
 }
 
-
 const prefix = "'";
-
 
 client.on('ready', () => {
   welcome(client)
@@ -31,11 +27,6 @@ client.on('ready', () => {
     generalChannel.send(randomlist.random[Math.floor(Math.random()*randomlist.random.length)]) ;
   }, 3600000);
 })
-
-
-
-
-
 
 client.on("message", message => {
   if (message.author.bot) return;

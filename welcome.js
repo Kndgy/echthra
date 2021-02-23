@@ -1,6 +1,5 @@
 module.exports = (client) => {
     client.on("guildMemberAdd", (member) =>{
-        console.log(member);
 
         const message = [
             `Hello <@${member.id}>`,
@@ -14,7 +13,6 @@ module.exports = (client) => {
             "",
             "*This message is automatically generated*",
         ]
-        
 
         var channel = member.guild.channels.cache.get('813004160617283586');
         channel.send(message)
