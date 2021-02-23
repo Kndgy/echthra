@@ -3,7 +3,7 @@ const { MessageEmbed } = require("discord.js");
 module.exports = (client) => {
     client.on("guildMemberAdd", (member) =>{
 
-        var channel = member.guild.channels.cache.get('813004160617283586');
+        var channel = member.client.channels.cache.get('813004160617283586');
         const embed = new MessageEmbed()
         .setColor(0xffabd7)
         .setAuthor('Yasuragi Support Server')
