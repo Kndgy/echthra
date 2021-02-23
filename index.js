@@ -61,7 +61,6 @@ client.on("message", message => {
 
   const response={
     "morning" : "no, go back to sleep",
-    "why" : "why not",
   }
   if(response[messagee]){
     message.channel.send(response[messagee]);
