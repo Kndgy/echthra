@@ -24,7 +24,11 @@ client.on('ready', () => {
   console.log(`true`)
   client.setInterval(function(){
     var generalChannel = client.channels.cache.get("723794736325853209");
-    generalChannel.send(randomlist.random[Math.floor(Math.random()*randomlist.random.length)]) ;
+    const embed = new Discord.MessageEmbed()
+    .setTitle('Fumiko史子 Hourly Vocabulary')
+    .setColor(0xffabd7)
+    .setImage(randomlist.random[Math.floor(Math.random()*randomlist.random.length)])
+    generalChannel.send(embed) ;
   }, 3600000);
 })
 
