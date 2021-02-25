@@ -21,7 +21,11 @@ const floppa = [
     "https://media.discordapp.net/attachments/775500327079903252/810617197130809375/image2.png?width=560&height=552",
     "https://media.discordapp.net/attachments/775500327079903252/810617197500039218/image3.png?width=563&height=552",
     "https://media.discordapp.net/attachments/775500327079903252/811855828222214145/k1t6xac6k7u51.png?width=552&height=552",
-    "https://media.discordapp.net/attachments/775500327079903252/811855940730486795/Ehpdoe4X0AAltSR.png?width=508&height=552"
+    "https://media.discordapp.net/attachments/775500327079903252/811855940730486795/Ehpdoe4X0AAltSR.png?width=508&height=552",
+    "https://media.discordapp.net/attachments/775500327079903252/814346440293875763/image0.png?width=592&height=562",
+    "https://tenor.com/view/big-floppa-floppa-huge-floppa-darkar1357-dodonation-gif-19981490",
+    "https://tenor.com/view/floppa-jakecord-floppacord-sadlynut-sadnut-gif-18885442",
+    "https://cdn.discordapp.com/attachments/405550360749539328/812896805191680030/52xusnsudoi61.png"
 ]
 
 module.exports = {
