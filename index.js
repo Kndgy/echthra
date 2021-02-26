@@ -1,5 +1,4 @@
 require('dotenv').config(); 
-const {prefix} = require(process.env.TOKEN);
 const fs = require('fs');
 const Discord = require("discord.js");
 const client = new Discord.Client();
@@ -16,6 +15,8 @@ for (const folder of commandFolders){
     client.commands.set(command.name, command);
   }
 }
+
+const prefix = "'";
 
 client.on('ready', () => {
   welcome(client)
