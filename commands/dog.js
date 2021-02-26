@@ -3,7 +3,7 @@ const {MessageEmbed} = require ('discord.js');
 
 module.exports = {
     name: 'dog',
-    description: 'dog',
+    description: 'random dog picts from dog.ceo',
     async execute(message,){
         request.get('https://dog.ceo/api/breeds/image/random',{
     },function(error, response, body) {

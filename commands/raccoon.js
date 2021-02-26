@@ -4,7 +4,7 @@ const {MessageEmbed} = require ('discord.js');
 
 module.exports = {
     name: 'raccoon',
-    description: 'racoon',
+    description: 'random raccoon picts from pixabay api',
     async execute(message){
         var r = await pixabay.searchImages(key, 'raccoon')
         const embed = new MessageEmbed()

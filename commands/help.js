@@ -1,30 +1,36 @@
-const { MessageEmbed } = require('discord.js');
+const {prefix} = require('../config.json')
 
 module.exports = {
-    name: 'help',
-    value: 'help command',
-    execute(message){
-    const help = new MessageEmbed()
-    .setColor(0x151b54)
-    .setTitle('help')
-    .setDescription('list of available command')
-    .addFields(
-      { name: 'ping', value: 'information about bot and API latency'},
-      { name: 'join', value: 'join a voice channel'},
-      { name: 'play "youtube url"', value:'play a song from youtube, without quotation'},
-      { name: 'skip', value:'skip a song'},
-      { name: 'stop', value:'remove queue and disconnect bot from voice channel'},
-      { name: 'leave', value:'disconenct bot from voice channel'},
-      { name: 'advice', value:'gives you random and *useful* advices'},
-      { name: 'topic', value: 'gives you random topics as conversation starter'},
-      { name: 'thought', value: 'just thought'},
-      { name: 'roll', value: 'rolls dice 1-100'},
-      { name: 'flip', value: 'flip a coint' },
-      { name: 'cat', value: 'gives you cets picture'},
-      { name: 'urban ', value: 'search for urban dictionary, ex: urban bruh'}
-    )
-    .setTimestamp()
-    .setFooter('[wip]spotify, playlist, queue list, implement calculator into main file');
-    message.channel.send(help);
-    }
-}
+    name:'help',
+    description:'help',
+    execute(message, args) {
+        const data = [];
+        const {commands} = message.client;
+        
+        if(!args.length){
+            data.push('Here\'s a list of all my commands: ');
+            data.push(commands.map(command => command.name).join(', '));
+            data.push(`\nyou can send\`${prefix}help[command name]\`to get info on a specific command`)
+
+            return message.channel.send(data, {split: true})
+            
+        }
+
+        const name = args[0].toLowerCase();
+        const command = commands.get(name) || commands.find(c => c.aliases && c.aliases.includes(name));
+
+        if(!command){
+            return message.reply('that\'s not a valid command');
+        }
+
+        data.push(`**name:**${command.name}`);
+
+        if (command.aliases) data.push(`**aliases:**${command.aliases.join(', ')}`);
+        if (command.description) data.push(`**Description:**${command.description}`);
+        if (command.usage) data.push(`**usage:**${prefix}${command.name} ${command.usage}`);
+
+        data.push(`**cooldown:**${command.cooldown || 3} second(s)`);
+
+        message.channel.send(data,{split:true})
+    },
+};

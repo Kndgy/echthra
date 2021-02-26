@@ -1,4 +1,5 @@
 require('dotenv').config(); 
+const {prefix} = require('./config.json');
 const fs = require('fs');
 const Discord = require("discord.js");
 const client = new Discord.Client();
@@ -15,8 +16,6 @@ for (const folder of commandFolders){
     client.commands.set(command.name, command);
   }
 }
-
-const prefix = "'";
 
 client.on('ready', () => {
   welcome(client)
@@ -36,7 +35,7 @@ client.on("message", message => {
   if (message.author.bot) return;
   if (!message.content.startsWith(prefix)) return;
 
-  const args = message.content.slice(prefix.length).trim().split(' ');
+  const args = message.content.slice(prefix.length).trim().split(/ +/);
   const commandName = args.shift().toLowerCase();
 
   if(commandName === "ping"){

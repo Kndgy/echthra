@@ -5,7 +5,7 @@ const fetch = require('node-fetch');
 
 module.exports = {
     name: 'urban',
-    description: 'get urban dictionary',
+    description: 'search from urban dictionary',
     async execute(message, args){
         
         if(!args.length){

@@ -30,7 +30,7 @@ const floppa = [
 
 module.exports = {
     name : 'floppa',
-    description: 'floppa',
+    description: 'random floppa colelctions picts',
     execute(message){
         message.channel.send(floppa[Math.floor(Math.random()*floppa.length)]);
     }

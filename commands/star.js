@@ -2,7 +2,7 @@ const { MessageEmbed } = require("discord.js");
 const fetch = require('node-fetch')
 module.exports ={
     name:'star',
-    description:'night sky',
+    description:'random stars and night sky from unsplash',
     async execute(message, args){
             message.channel.send({embed:{
                 color:0xffabd7,

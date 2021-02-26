@@ -39,7 +39,7 @@ const bingus =["https://media.discordapp.net/attachments/748780918067691582/8103
 ]
 module.exports = {
     name : 'bingus',
-    description: 'bingus',
+    description: 'random collections of bingus picts',
     execute(message){
         message.channel.send(bingus[Math.floor(Math.random()*bingus.length)]);
     }

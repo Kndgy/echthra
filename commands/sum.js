@@ -1,6 +1,6 @@
 module.exports = {
     name : 'sum',
-    description: 'sum',
+    description: 'sum integer from given arguments',
     aliases: ['add'],
     execute(message, args){
         const numArgs = args.map(x => parseFloat(x));
