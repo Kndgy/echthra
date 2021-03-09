@@ -29,7 +29,8 @@ module.exports = {
             { name: 'Definition', value: trim(answer.definition, 1024)},
             { name: 'Example', value: trim(answer.example, 1024)},
             { name: 'Rating', value: `👍 ${answer.thumbs_up}. 👎 ${answer.thumbs_down}.`}
-          );
+          )
+          .setFooter('retreived from urban dictionary')
           message.channel.send(embed)
         }
 
