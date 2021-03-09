@@ -11,7 +11,7 @@ module.exports = {
         if(!args.length){
             return message.channel.send('you need to type what you are looking for');
           }
-          const query = querystring.stringify({ term: args.join('')});
+          const query = querystring.stringify({ term: args.join(' ')});
           const {list} = await fetch(`https://api.urbandictionary.com/v0/define?${query}`).then(
             response => response.json()
           );
