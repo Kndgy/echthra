@@ -16,7 +16,7 @@ module.exports = {
             response => response.json()
           );
           if(!list.length){
-            return message.channel.send(`no results found for${args.join(' ')}**.`);
+            return message.channel.send(`no results found for ${args.join(' ')}**.`);
           }
           /* embed for urban */
           const trim = (str, max) => ((str.length>max) ? `${str.slice(0, max - 3)}...` : str);

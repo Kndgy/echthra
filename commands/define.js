@@ -36,6 +36,11 @@ http.get(options, (resp) => {
     
     resp.on('end', async () => {
         let {results} = await JSON.parse(data)
+
+        if(!results){
+            return message.channel.send(`no results found for ${word}`);
+        }
+
         const [answer] = results;
         const link = `https://www.lexico.com/definition/${word}`
         const embed = new MessageEmbed()
