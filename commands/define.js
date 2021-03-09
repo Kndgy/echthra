@@ -34,8 +34,8 @@ http.get(options, (resp) => {
         data += d;
     });
     
-    resp.on('end', () => {
-        let {results} = JSON.parse(data)
+    resp.on('end', async () => {
+        let {results} = await JSON.parse(data)
         const [answer] = results;
         const link = `https://www.lexico.com/definition/${word}`
         const embed = new MessageEmbed()
