@@ -10,7 +10,8 @@ module.exports = {
             return message.channel.send('you need to type what you are looking for');
         }
         const query = args[0];
-        const {data} = await fetch(`https://jisho.org/api/v1/search/words?keyword=${query}`).then(
+        const encoded = encodeURI(query)
+        const {data} = await fetch(`https://jisho.org/api/v1/search/words?keyword=${encoded}`).then(
             response => response.json()
         );
         if(!data.length){
