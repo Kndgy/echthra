@@ -15,7 +15,7 @@ module.exports = {
 
 const app_id = process.env.app_id; 
 const app_key = process.env.app_key; 
-const word = args[0];
+const word = encodeURI(args.join(' '));
 
 const options = {
   host: 'od-api.oxforddictionaries.com',
@@ -45,7 +45,7 @@ http.get(options, (resp) => {
         const link = `https://www.lexico.com/definition/${word}`
         const embed = new MessageEmbed()
         .setColor(0xffabd7)
-        .setTitle(word)
+        .setTitle(decodeURI(word))
         .setURL(link)
         .addFields(
             {name: 'Part of Speech', value: (answer.lexicalEntries[0].lexicalCategory.text)},

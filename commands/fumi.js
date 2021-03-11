@@ -9,8 +9,8 @@ module.exports = {
         if(!args.length){
             return message.channel.send('you need to type what you are looking for');
         }
-        const query = args[0];
-        const encoded = encodeURI(query)
+        const query = args;
+        const encoded = encodeURI(query.join(' '))
         const {data} = await fetch(`https://jisho.org/api/v1/search/words?keyword=${encoded}`).then(
             response => response.json()
         );
@@ -22,7 +22,7 @@ module.exports = {
         const link = `https://jisho.org/search/${query}`
         const embed = new MessageEmbed()
         .setColor(0xffabd7)
-        .setTitle(query)
+        .setTitle(decodeURI(query))
         .setURL(link)
         .addFields(
             {name: 'word', value:(a.slug)},
