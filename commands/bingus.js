@@ -35,7 +35,8 @@ const bingus =["https://media.discordapp.net/attachments/748780918067691582/8103
 "https://media.discordapp.net/attachments/775500327079903252/814346711169630259/image0.png?width=575&height=562",
 "https://media.discordapp.net/attachments/775500327079903252/814346711513169930/image1.png?width=570&height=562",
 "https://tenor.com/view/douyin-lelemaoshe-sphynx-bingus-hairless-cat-gif-19416600",
-"https://tenor.com/view/fast-gifs-bingus-hi-bingus-hey-bingus-aaaaaaaahhhhh-hi-bingus-gif-19211402"
+"https://tenor.com/view/fast-gifs-bingus-hi-bingus-hey-bingus-aaaaaaaahhhhh-hi-bingus-gif-19211402",
+"https://cdn.discordapp.com/attachments/775500327079903252/828363757313851392/image0.jpg"
 ]
 module.exports = {
     name : 'bingus',
