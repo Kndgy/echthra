@@ -3,6 +3,7 @@ const fs = require('fs');
 const Discord = require("discord.js");
 const client = new Discord.Client();
 const randomlist = require('./commands/random.json');
+const welcome = require('./welcome');
 
 client.commands = new Discord.Collection();
 const commandFolders = fs.readdirSync('./commands');
@@ -18,6 +19,7 @@ for (const folder of commandFolders){
 const prefix = "'";
 
 client.on('ready', () => {
+  welcome(client)
   client.user.setPresence({ game: { name: 'with discord.js' }, status: 'idle' })
   console.log(`true`)
   client.setInterval(function(){
