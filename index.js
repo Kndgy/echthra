@@ -2,7 +2,7 @@ require('dotenv').config();
 const fs = require('fs');
 const Discord = require("discord.js");
 const client = new Discord.Client();
-const randomlist = require('./commands/random.json');
+const randomlist = require('./commands/random1.json');
 const welcome = require('./welcome');
 
 client.commands = new Discord.Collection();
@@ -23,12 +23,8 @@ client.on('ready', () => {
   client.user.setPresence({ game: { name: 'with discord.js' }, status: 'idle' })
   console.log(`true`)
   client.setInterval(function(){
-    var generalChannel = client.channels.cache.get("723794736325853209");
-    const embed = new Discord.MessageEmbed()
-    .setTitle('Fumiko史子 Hourly Vocabulary')
-    .setColor(0xffabd7)
-    .setImage(randomlist.random[Math.floor(Math.random()*randomlist.random.length)])
-    generalChannel.send(embed) ;
+    var generalChannel = client.channels.cache.get("836841913121505300");
+    generalChannel.send(randomlist.random[Math.floor(Math.random()*randomlist.random.length)]) ;
   }, 3600000);
 })
 
