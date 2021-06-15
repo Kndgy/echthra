@@ -1,21 +1,50 @@
-# echo bot[WIP]
+# **Echthra's BOT**
 
-a bot i code as my side project for a server
+(Pre Alpha)
 
-you can start the bot on your local machine with :
+### **Overview**
 
-### `npm start`
+A bot i made supposedly just to learn nodejs, but ended up making bot instead
 
-don't forget to put your bot token on .env file or config.json instead
+### **Installation**
 
-prefix : '
+Download the source code to your local machine and run using NPM.
+But first, add config file containing your bot TOKEN or use DOTENV file like the one i'm using.
 
-what can this bot do :
+#### **NPM**
 
-send random pict of cats, dog,
+Use **npm start** to run the bot
 
-random stars and night sky pict from unsplash api
+### **Technologies**
 
-gives you random topic, advice, and thought
+- Node.js
+- Discord.JS v12 (Stable)
 
-and others stuff
+### **Api**
+
+- Jisho.org
+- Urban Dictionary
+- Oxford Dictionary
+- Unsplash 
+- Pixabay (Deprecated)
+
+### **To Do**
+
+```
+Fixes and add back music 
+Tidy up the codes
+Assign Dynamically
+
+```
+
+### **Features**
+
+Look at Commands folder. (Undocumented yet) 
+
+### **Usage**
+
+Prefix : ' (index.js line 17)
+
+### **License**
+
+This project is licensed under [MIT License](https://opensource.org/licenses/MIT)

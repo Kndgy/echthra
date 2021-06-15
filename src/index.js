@@ -2,16 +2,14 @@ require('dotenv').config();
 const fs = require('fs');
 const Discord = require("discord.js");
 const client = new Discord.Client();
-const randomlist = require('./commands/random1.json');
-const welcome = require('./welcome');
 
 client.commands = new Discord.Collection();
-const commandFolders = fs.readdirSync('./commands');
+const commandFolders = fs.readdirSync('./src/commands');
 
 for (const folder of commandFolders){
-  const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
+  const commandFiles = fs.readdirSync(`./src/commands/${folder}`).filter(file => file.endsWith('.js'));
   for (const file of commandFiles) {
-    const command = require(`./commands/${file}`);
+    const command = require(`./commands/${folder}/${file}`);
     client.commands.set(command.name, command);
   }
 }
@@ -19,13 +17,8 @@ for (const folder of commandFolders){
 const prefix = "'";
 
 client.on('ready', () => {
-  welcome(client)
   client.user.setPresence({ game: { name: 'with discord.js' }, status: 'idle' })
   console.log(`true`)
-  client.setInterval(function(){
-    var generalChannel = client.channels.cache.get("836841913121505300");
-    generalChannel.send(randomlist.random[Math.floor(Math.random()*randomlist.random.length)]) ;
-  }, 3600000);
 })
 
 client.on("message", message => {
